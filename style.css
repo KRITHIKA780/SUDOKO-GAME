@@ -700,6 +700,27 @@ h1 span {
 .logo h1 {
     font-size: 3.5rem;
     margin-bottom: 12px;
+    background: linear-gradient(135deg,
+            #fff 0%,
+            var(--holo-cyan) 50%,
+            var(--holo-purple) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+    background-size: 200% auto;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
 }
 
 .landing-content p {
