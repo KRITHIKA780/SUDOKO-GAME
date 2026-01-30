@@ -298,8 +298,15 @@ class SudokuApp {
                 this.selectedCell.classList.add('user-filled');
                 if (parseInt(num) !== this.solution[index]) {
                     this.selectedCell.classList.add('error');
+                    // Add subtle vibration/shake effect if on mobile
+                    if (navigator.vibrate) navigator.vibrate(50);
                 } else {
                     this.selectedCell.classList.remove('error');
+                    // Success flash effect
+                    this.selectedCell.style.boxShadow = '0 0 30px var(--holo-cyan)';
+                    setTimeout(() => {
+                        this.selectedCell.style.boxShadow = '';
+                    }, 400);
                     this.checkVictory();
                 }
             } else {
@@ -419,7 +426,7 @@ class SudokuApp {
             clearInterval(this.timer);
             document.getElementById('final-time').textContent = this.timerDisplay.textContent;
             document.getElementById('victory-modal').classList.add('active');
-            
+
             // Confetti effect
             confetti({
                 particleCount: 150,
